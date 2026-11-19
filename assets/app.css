@@ -492,3 +492,6 @@ input[type=range]{width:100%;accent-color:var(--gold)}
   .logo{font-size:1.5rem}
   .logo small{white-space:nowrap;letter-spacing:.18em;font-size:.55rem}
 }
+/* static render for screenshots (?shot) */
+.shot *,.shot *::before,.shot *::after{animation-duration:0s!important;animation-delay:0s!important;transition:none!important}
+.shot .reveal{opacity:1;transform:none}

@@ -92,7 +92,8 @@ const FAQ = [
 ];
 const HOURS = [['Mon – Thu', '7:00am – 6:00pm'], ['Friday', '7:00am – 3:00pm'], ['Saturday', '8:00am – 1:00pm'], ['Sunday', 'Closed']];
 
-/* ---------- theme ---------- */
+/* ---------- theme (+ ?shot = static render for screenshots) ---------- */
+if (/[?&]shot/.test(location.search)) document.documentElement.classList.add('shot');
 const savedTheme = store.get('lumen-theme', null);
 document.documentElement.dataset.theme = savedTheme || 'light';
 
