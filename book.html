@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book an Appointment Online — Lumen Dental Studio Scottsdale</title>
+<meta name="description" content="Book your dental appointment online at Lumen Dental Studio in Scottsdale. Choose a service, dentist, date and time in under 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='12' fill='%231f6f68'/><path d='M14 11c-2.4 0-3.8 1.8-3.8 4.2 0 2.8 1.4 4.2 1.9 6.5.5 2.8.9 6.1 2.3 6.1s1.6-3.7 4-3.7 2.6 3.7 4 3.7 1.8-3.3 2.3-6.1c.5-2.3 1.9-3.7 1.9-6.5 0-2.4-1.4-4.2-3.8-4.2-1.9 0-2.8.9-4.6.9S15.9 11 14 11z' fill='%23f7f4ef'/></svg>">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="book">
+<div id="header"></div>
+
+<main>
+<section class="page-hero" style="padding-bottom:40px">
+  <div class="container">
+    <span class="eyebrow">Online booking</span>
+    <h1>Book your <em>visit</em></h1>
+    <p class="lead">Four quick steps. Real-time availability. You’ll get a confirmation instantly.</p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="container book-wrap">
+    <div class="book-main" id="bookMain">
+      <div class="steps" id="steps"><div class="cur"><i></i><span>1 · Service</span></div><div><i></i><span>2 · Date &amp; time</span></div><div><i></i><span>3 · Details</span></div><div><i></i><span>4 · Confirm</span></div></div>
+
+      <div class="step active" data-step="1">
+        <h2>What brings you in?</h2>
+        <p>Choose the visit type that fits best — we’ll make sure the right time is reserved.</p>
+        <div class="svc-pick" id="svcPick"></div>
+        <span class="sub-h">Preferred dentist</span>
+        <div class="doc-pick" id="docPick"></div>
+      </div>
+
+      <div class="step" data-step="2">
+        <h2>Pick a date &amp; time</h2>
+        <p id="step2Sub">Dots show days with open appointments.</p>
+        <div class="cal-wrap">
+          <div>
+            <div class="cal-head"><button class="icon-btn" id="prevM" aria-label="Previous month">‹</button><b id="monthLbl"></b><button class="icon-btn" id="nextM" aria-label="Next month">›</button></div>
+            <div class="cal" id="cal"></div>
+            <div class="cal-legend"><span>Available</span><span class="few">Few left</span></div>
+          </div>
+          <div><div class="slot-head" id="slotHead">Select a date</div><div class="slots" id="slots"></div></div>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <h2>Your details</h2>
+        <p>So we can confirm and send reminders. We never share your information.</p>
+        <form class="form-grid f" id="details" novalidate>
+          <div><label for="first">First name</label><input id="first" required autocomplete="given-name"><div class="err">Please enter your first name</div></div>
+          <div><label for="last">Last name</label><input id="last" required autocomplete="family-name"><div class="err">Please enter your last name</div></div>
+          <div><label for="email">Email</label><input id="email" type="email" required autocomplete="email"><div class="err">Please enter a valid email</div></div>
+          <div><label for="phone">Mobile phone</label><input id="phone" type="tel" required autocomplete="tel" placeholder="(480) 555-0100"><div class="err">Please enter a 10-digit phone number</div></div>
+          <div class="full"><label>Have you visited Lumen before?</label><div class="toggle-row"><label><input type="radio" name="pt" value="New patient" checked><span>I’m a new patient</span></label><label><input type="radio" name="pt" value="Returning patient"><span>Returning patient</span></label></div></div>
+          <div class="full"><label>How will you pay?</label><div class="toggle-row" id="payRow"><label><input type="radio" name="pay" value="PPO insurance" checked><span>Dental insurance</span></label><label><input type="radio" name="pay" value="Lumen Membership"><span>Lumen Membership</span></label><label><input type="radio" name="pay" value="Self-pay"><span>Self-pay</span></label></div></div>
+          <div class="full"><label for="notes">Anything we should know? <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="notes" placeholder="Dental anxiety, sensitive teeth, accessibility needs…"></textarea></div>
+          <label class="consent full"><input type="checkbox" class="check" id="consent" required><span>I agree to receive appointment reminders by text and email. Reply STOP to opt out.</span></label>
+          <div class="err full" id="consentErr" style="margin-top:-.6rem">Please accept to continue</div>
+        </form>
+      </div>
+
+      <div class="step" data-step="4">
+        <h2>Review &amp; confirm</h2>
+        <p>Please check everything looks right. No payment is taken online.</p>
+        <div class="review-box" id="reviewBox"></div>
+        <p class="fine" style="margin-top:1rem">Free cancellation or rescheduling up to 24 hours before your visit.</p>
+      </div>
+
+      <div class="step" data-step="5">
+        <div class="confirm">
+          <div class="tick"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span class="eyebrow">You’re booked</span>
+          <h2 style="margin-top:.6rem" id="cTitle">See you soon!</h2>
+          <p style="color:var(--muted);margin-top:.6rem" id="cSub"></p>
+          <div class="ticket" id="ticket"></div>
+          <div class="confirm-actions">
+            <button class="btn btn-primary" id="ics">${ic('calendar', 18)} Add to calendar (.ics)</button>
+            <a class="btn btn-line" id="gcal" target="_blank" rel="noopener">Google Calendar</a>
+            <button class="btn btn-line" id="cancel">Cancel appointment</button>
+          </div>
+          <p class="fine" style="margin-top:1.4rem">Demo booking — saved only in your browser. Nothing is sent to a real clinic.</p>
+        </div>
+      </div>
+
+      <div class="step-nav" id="stepNav"><button class="btn btn-line" id="back">← Back</button><button class="btn btn-primary" id="next" disabled>Continue →</button></div>
+    </div>
+
+    <aside class="summary" id="summary">
+      <h4>Your appointment</h4>
+      <div class="sum-line"><span class="ic">${ic('tooth', 18)}</span><div><small>Service</small><b id="sumSvc" class="empty">Not selected</b></div></div>
+      <div class="sum-line"><span class="ic">${ic('user', 18)}</span><div><small>Dentist</small><b id="sumDoc">First available</b></div></div>
+      <div class="sum-line"><span class="ic">${ic('calendar', 18)}</span><div><small>Date &amp; time</small><b id="sumDate" class="empty">Not selected</b></div></div>
+      <div class="sum-line"><span class="ic">${ic('pin', 18)}</span><div><small>Location</small><b>7150 E Camelback Rd, Suite 210</b></div></div>
+      <div class="sum-note" id="sumNote">💡 New patients: please arrive 10 minutes early. Bring your insurance card if you have one.</div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/app.js"></script>
+<script>
+// inline icons inside static markup
+$$('.summary .ic, #ics').forEach(el => el.innerHTML = el.innerHTML.replace(/\$\{ic\('(\w+)', (\d+)\)\}/g, (_, k, s) => ic(k, +s)));
+const q = new URLSearchParams(location.search);
+const st = { step: 1, svc: null, doc: 'any', date: null, time: null };
+if (BOOK_SERVICES.some(s => s.id === q.get('service'))) st.svc = q.get('service');
+if (DOCTORS.some(d => d.id === q.get('doctor'))) st.doc = q.get('doctor');
+const svcObj = () => BOOK_SERVICES.find(s => s.id === st.svc), docObj = () => DOCTORS.find(d => d.id === st.doc);
+const docName = () => st.doc === 'any' ? 'First available' : docObj().n;
+const fmtDate = d => d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+// step 1
+$('#svcPick').innerHTML = BOOK_SERVICES.map(s => `<button type="button" class="svc-opt" data-id="${s.id}"><span class="ic">${ic(s.icon, 20)}</span><span><b>${s.name}</b><small>${s.dur} min · ${s.note}</small></span></button>`).join('');
+$('#docPick').innerHTML = `<button type="button" class="doc-opt" data-id="any"><span class="any">✦</span>First available</button>` + DOCTORS.map(d => `<button type="button" class="doc-opt" data-id="${d.id}"><img src="${IMG(d.img, 100)}" alt="">${d.n}</button>`).join('');
+$('#svcPick').addEventListener('click', e => { const b = e.target.closest('.svc-opt'); if (b) { st.svc = b.dataset.id; sync(); } });
+$('#docPick').addEventListener('click', e => { const b = e.target.closest('.doc-opt'); if (b) { st.doc = b.dataset.id; st.time = null; sync(); } });
+
+// step 2: calendar
+const today = new Date(); today.setHours(0, 0, 0, 0);
+let view = new Date(today.getFullYear(), today.getMonth(), 1);
+const maxDate = new Date(today); maxDate.setDate(today.getDate() + 60);
+function renderCal() {
+  $('#monthLbl').textContent = view.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  $('#prevM').disabled = view <= new Date(today.getFullYear(), today.getMonth(), 1);
+  $('#nextM').disabled = new Date(view.getFullYear(), view.getMonth() + 1, 1) > maxDate;
+  const first = view.getDay(), days = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+  let html = ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => `<span class="dow">${d}</span>`).join('') + '<span></span>'.repeat(first);
+  for (let i = 1; i <= days; i++) {
+    const d = new Date(view.getFullYear(), view.getMonth(), i), n = d < today || d > maxDate ? 0 : slotsFor(d, st.doc).length;
+    const cls = [n ? (n < 4 ? 'has few' : 'has') : '', st.date && d.toDateString() === st.date.toDateString() ? 'sel' : ''].join(' ');
+    html += `<button type="button" data-d="${d.getTime()}" class="${cls}" ${n ? '' : 'disabled'} aria-label="${fmtDate(d)}${n ? ', ' + n + ' openings' : ', unavailable'}">${i}</button>`;
+  }
+  $('#cal').innerHTML = html;
+}
+function renderSlots() {
+  if (!st.date) { $('#slotHead').textContent = 'Select a date'; $('#slots').innerHTML = '<div class="none">← Choose a day with a dot to see open times.</div>'; return; }
+  const s = slotsFor(st.date, st.doc);
+  $('#slotHead').textContent = fmtDate(st.date);
+  if (!s.length) { $('#slots').innerHTML = '<div class="none">No openings this day. Try another date.</div>'; return; }
+  const grp = (lbl, arr) => arr.length ? `<span class="group">${lbl}</span>` + arr.map(t => `<button type="button" data-t="${t}" class="${st.time === t ? 'sel' : ''}">${fmtTime(t)}</button>`).join('') : '';
+  $('#slots').innerHTML = grp('Morning', s.filter(t => t < 720)) + grp('Afternoon', s.filter(t => t >= 720));
+}
+$('#cal').addEventListener('click', e => { const b = e.target.closest('button[data-d]'); if (b && !b.disabled) { st.date = new Date(+b.dataset.d); st.time = null; sync(); } });
+$('#slots').addEventListener('click', e => { const b = e.target.closest('button[data-t]'); if (b) { st.time = +b.dataset.t; sync(); } });
+$('#prevM').addEventListener('click', () => { view.setMonth(view.getMonth() - 1); renderCal(); });
+$('#nextM').addEventListener('click', () => { view.setMonth(view.getMonth() + 1); renderCal(); });
+
+// step 3 validation
+function validDetails(show) {
+  let ok = true;
+  $$('#details input[required]').forEach(i => {
+    const v = i.type === 'checkbox' ? i.checked : i.value.trim();
+    const bad = !v || (i.type === 'email' && !/^\S+@\S+\.\S+$/.test(v)) || (i.type === 'tel' && v.replace(/\D/g, '').length < 10);
+    if (show) { i.classList.toggle('invalid', bad); if (i.id === 'consent') $('#consentErr').style.display = bad ? 'block' : 'none'; }
+    if (bad) ok = false;
+  });
+  return ok;
+}
+$('#details').addEventListener('input', e => { e.target.classList.remove('invalid'); if (e.target.id === 'consent') $('#consentErr').style.display = 'none'; sync(); });
+
+// navigation
+function canNext() { return st.step === 1 ? !!st.svc : st.step === 2 ? !!(st.date && st.time != null) : st.step === 3 ? true : st.step === 4; }
+function go(n) { st.step = n; sync(); const top = $('#bookMain').getBoundingClientRect().top + scrollY - 110; if (scrollY > top) scrollTo({ top, behavior: 'smooth' }); }
+$('#next').addEventListener('click', () => {
+  if (st.step === 3 && !validDetails(true)) { $('#details .invalid')?.focus(); return; }
+  if (st.step === 4) return confirmBooking();
+  go(st.step + 1);
+});
+$('#back').addEventListener('click', () => go(st.step - 1));
+document.addEventListener('click', e => { const a = e.target.closest('[data-goto]'); if (a) { e.preventDefault(); go(+a.dataset.goto); } });
+
+function sync() {
+  $$('.svc-opt').forEach(b => b.classList.toggle('sel', b.dataset.id === st.svc));
+  $$('.doc-opt').forEach(b => b.classList.toggle('sel', b.dataset.id === st.doc));
+  $$('.step').forEach(s => s.classList.toggle('active', +s.dataset.step === st.step));
+  $$('#steps > div').forEach((d, i) => { d.className = i + 1 < st.step ? 'done' : i + 1 === st.step ? 'cur' : ''; });
+  $('#stepNav').style.display = st.step === 5 ? 'none' : '';
+  $('#back').style.visibility = st.step === 1 ? 'hidden' : 'visible';
+  $('#next').disabled = !canNext();
+  $('#next').textContent = st.step === 4 ? 'Confirm booking ✓' : 'Continue →';
+  if (st.step === 2) { $('#step2Sub').textContent = `${svcObj().name} · ${svcObj().dur} min with ${docName().toLowerCase() === 'first available' ? 'the first available dentist' : docName()}. Dots show days with openings.`; renderCal(); renderSlots(); }
+  const s = svcObj();
+  $('#sumSvc').textContent = s ? `${s.name} · ${s.dur} min` : 'Not selected'; $('#sumSvc').classList.toggle('empty', !s);
+  $('#sumDoc').textContent = docName();
+  $('#sumDate').textContent = st.date && st.time != null ? `${fmtDate(st.date)} · ${fmtTime(st.time)}` : st.date ? fmtDate(st.date) : 'Not selected';
+  $('#sumDate').classList.toggle('empty', !(st.date && st.time != null));
+  if (st.step === 4) {
+    const pay = $('input[name=pay]:checked').value;
+    $('#reviewBox').innerHTML = [['Service', `${s.name} (${s.dur} min)`, 1], ['Dentist', docName(), 1], ['When', `${fmtDate(st.date)} at ${fmtTime(st.time)}`, 2], ['Patient', `${$('#first').value.trim()} ${$('#last').value.trim()} · ${$('input[name=pt]:checked').value}`, 3], ['Contact', `${$('#email').value.trim()} · ${$('#phone').value.trim()}`, 3], ['Payment', pay, 3]]
+      .map(([k, v, g]) => `<div><span>${k}</span><b>${v}<a href="#" data-goto="${g}">Edit</a></b></div>`).join('');
+  }
+  const est = store.get('lumen-est', null);
+  if (st.step < 5 && est && est.total) $('#sumNote').innerHTML = `💡 Your saved cost estimate: <b>${money(est.total)}</b>. We’ll review it with you at your visit.`;
+}
+
+// confirm + calendar export
+const pad = n => String(n).padStart(2, '0');
+function stamp(d) { return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`; }
+function confirmBooking() {
+  const s = svcObj(), start = new Date(st.date); start.setHours(Math.floor(st.time / 60), st.time % 60, 0, 0);
+  const doctor = st.doc === 'any' ? DOCTORS[Math.floor(seeded(st.time + st.date.getDate()) * DOCTORS.length)].n : docName();
+  const appt = { id: 'LMN-' + Math.floor(100000 + seeded(start.getTime() / 6e4) * 899999), service: s.name, dur: s.dur, doctor, iso: start.toISOString(), time: fmtTime(st.time), name: $('#first').value.trim() };
+  store.set('lumen-appt', appt); showConfirmed(appt);
+}
+function showConfirmed(appt) {
+  const start = new Date(appt.iso), end = new Date(start.getTime() + appt.dur * 6e4);
+  st.step = 5; sync();
+  $('#cTitle').textContent = `See you soon, ${appt.name}!`;
+  $('#cSub').textContent = `A confirmation has been “sent” to your email and phone. We’ll remind you 24 hours before.`;
+  $('#ticket').innerHTML = `<div class="ticket-top"><b>${start.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</b><span>${appt.time}</span></div>
+    <div class="ticket-body"><div><small>Service</small><b>${appt.service}</b></div><div><small>Dentist</small><b>${appt.doctor}</b></div><div><small>Duration</small><b>${appt.dur} minutes</b></div><div><small>Confirmation</small><b>${appt.id}</b></div><div style="grid-column:1/-1"><small>Location</small><b>${ADDRESS}</b></div></div>`;
+  $('#sumSvc').textContent = appt.service; $('#sumSvc').classList.remove('empty'); $('#sumDoc').textContent = appt.doctor;
+  $('#sumDate').textContent = `${fmtDate(start)} · ${appt.time}`; $('#sumDate').classList.remove('empty');
+  $('#sumNote').innerHTML = '✅ Booked! Free cancellation up to 24 hours before your visit.';
+  $('#gcal').href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(appt.service + ' — Lumen Dental Studio')}&dates=${stamp(start)}/${stamp(end)}&location=${encodeURIComponent(ADDRESS)}&details=${encodeURIComponent('Demo appointment ' + appt.id + ' with ' + appt.doctor)}`;
+  $('#ics').onclick = () => {
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Lumen Dental Studio//Demo//EN', 'BEGIN:VEVENT', `UID:${appt.id}@lumendental.example`, `DTSTAMP:${stamp(new Date())}`, `DTSTART:${stamp(start)}`, `DTEND:${stamp(end)}`, `SUMMARY:${appt.service} — Lumen Dental Studio`, `LOCATION:${ADDRESS.replace(/,/g, '\\,')}`, `DESCRIPTION:Demo appointment ${appt.id} with ${appt.doctor}`, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'lumen-appointment.ics'; a.click(); URL.revokeObjectURL(a.href);
+  };
+  $('#cancel').onclick = () => { store.del('lumen-appt'); toast('Your appointment was cancelled.'); Object.assign(st, { step: 1, date: null, time: null }); $('#sumNote').textContent = '💡 New patients: please arrive 10 minutes early.'; sync(); };
+}
+const saved = store.get('lumen-appt', null);
+if (q.get('view') && saved && new Date(saved.iso) > new Date()) showConfirmed(saved); else sync();
+observeReveals();
+</script>
+</body>
+</html>

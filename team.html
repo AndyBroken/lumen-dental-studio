@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Dentists &amp; Office — Lumen Dental Studio Scottsdale</title>
+<meta name="description" content="Meet the dentists of Lumen Dental Studio in Scottsdale, AZ, and tour our calm, modern office and technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='12' fill='%231f6f68'/><path d='M14 11c-2.4 0-3.8 1.8-3.8 4.2 0 2.8 1.4 4.2 1.9 6.5.5 2.8.9 6.1 2.3 6.1s1.6-3.7 4-3.7 2.6 3.7 4 3.7 1.8-3.3 2.3-6.1c.5-2.3 1.9-3.7 1.9-6.5 0-2.4-1.4-4.2-3.8-4.2-1.9 0-2.8.9-4.6.9S15.9 11 14 11z' fill='%23f7f4ef'/></svg>">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="team">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our team</span>
+    <h1>The people behind <em>your smile</em></h1>
+    <p class="lead">Four dentists, eleven hygienists and assistants, and one shared belief: everyone deserves to feel at ease in the chair.</p>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="container">
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Care team</span><h2>Hygienists &amp; <em>patient care</em></h2></div></div>
+    <div class="ins-grid" id="staff"></div>
+  </div>
+</section>
+
+<section id="office">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">The studio</span><h2>A space designed to <em>calm</em></h2><p>Natural light, private treatment suites and a lounge with tea, not a waiting room with old magazines.</p></div></div>
+    <div class="office reveal">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80" alt="Bright modern treatment room" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1643660526741-094639fbe53a?auto=format&fit=crop&w=700&q=80" alt="Dental chair in a treatment suite" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=700&q=80" alt="Treatment room with dental chair" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=700&q=80" alt="Dentist reviewing digital X-rays" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1681939282741-9ace0a227977?auto=format&fit=crop&w=700&q=80" alt="Patient visit" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Technology</span><h2>Precise, gentle, <em>faster</em></h2></div></div>
+    <div class="tech-grid" id="tech"></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/app.js"></script>
+<script>
+$('#teamGrid').innerHTML = DOCTORS.map(docCard).join('');
+const openDoc = docModal(); $('#teamGrid').addEventListener('click', e => { const b = e.target.closest('[data-doc]'); if (b) openDoc(b.dataset.doc); });
+$('#staff').innerHTML = [['Jenna Liu, RDH', 'Lead Hygienist · 12 yrs'], ['Marco Diaz, RDH', 'Hygienist · perio care'], ['Hannah Cole', 'Patient Coordinator'], ['Priya Nair', 'Insurance &amp; Billing']]
+  .map(([n, r]) => `<div class="ins reveal"><div class="ic">${ic('user', 26)}</div><b>${n}</b><span>${r}</span></div>`).join('');
+$('#tech').innerHTML = [['scan', '3D intraoral scanning', 'Accurate digital impressions in minutes — no trays, no gag reflex.'], ['tooth', 'Same-day CAD/CAM crowns', 'Crowns designed and milled in-house while you relax.'], ['shield', 'Low-dose 3D imaging', 'Up to 80% less radiation than traditional film X-rays.']]
+  .map(([i, h, p]) => `<div class="tech reveal"><div class="ic">${ic(i, 26)}</div><h3>${h}</h3><p>${p}</p></div>`).join('');
+if (location.hash && DOCTORS.some(d => d.id === location.hash.slice(1))) openDoc(location.hash.slice(1));
+observeReveals();
+</script>
+</body>
+</html>

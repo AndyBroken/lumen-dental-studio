@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treatments &amp; Prices — Lumen Dental Studio Scottsdale</title>
+<meta name="description" content="Dental treatments and transparent price ranges at Lumen Dental Studio in Scottsdale: exams, whitening, veneers, clear aligners, implants and crowns. Instant cost estimator.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='12' fill='%231f6f68'/><path d='M14 11c-2.4 0-3.8 1.8-3.8 4.2 0 2.8 1.4 4.2 1.9 6.5.5 2.8.9 6.1 2.3 6.1s1.6-3.7 4-3.7 2.6 3.7 4 3.7 1.8-3.3 2.3-6.1c.5-2.3 1.9-3.7 1.9-6.5 0-2.4-1.4-4.2-3.8-4.2-1.9 0-2.8.9-4.6.9S15.9 11 14 11z' fill='%23f7f4ef'/></svg>">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="treatments">
+<div id="header"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Treatments &amp; prices</span>
+    <h1>Care for every <em>stage</em> of your smile</h1>
+    <p class="lead">Transparent price ranges for every treatment, and an instant estimator that factors in your insurance or membership.</p>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="container">
+    <div class="tabs" id="tabs"></div>
+    <div class="t-grid" id="tGrid"></div>
+  </div>
+</section>
+
+<section class="reviews" id="estimator">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Smile cost estimator</span><h2>Know your cost <em>before</em> you sit down</h2><p>Select treatments, choose how you’ll pay and see an instant estimate. Your dentist confirms the final plan at your visit.</p></div></div>
+    <div class="est">
+      <div class="est-list reveal" id="estList"></div>
+      <aside class="est-side reveal">
+        <h3>Your estimate</h3>
+        <div class="opt"><label>Coverage</label><div class="seg" id="cov"><button data-v="none" class="active">Self-pay</button><button data-v="ppo">PPO insurance</button><button data-v="member">Membership</button></div></div>
+        <div class="opt" id="maxWrap" style="display:none"><label>Remaining annual maximum</label><input type="range" id="annual" min="500" max="3000" step="100" value="1500"><div class="range-val"><span>$500</span><b id="annualOut">$1,500</b><span>$3,000</span></div></div>
+        <div class="opt"><label>Payment</label><div class="seg" id="term" style="grid-template-columns:repeat(4,1fr)"><button data-v="0" class="active">In full</button><button data-v="6">6 mo</button><button data-v="12">12 mo</button><button data-v="24">24 mo</button></div></div>
+        <div class="est-sum">
+          <div><span>Treatment subtotal</span><b id="sSub">$0</b></div>
+          <div><span id="sSaveLbl">Savings</span><b id="sSave">−$0</b></div>
+          <div class="total"><span>Your estimated cost</span><b id="sTotal">$0</b></div>
+        </div>
+        <div class="monthly" id="monthly"><small>Select treatments to see your estimate</small></div>
+        <a href="book.html" class="btn" id="estBook">Book a free consultation</a>
+        <p class="disclaimer">Estimates for demonstration only. 0% APR on 6 and 12-month plans; 24 months at 9.9% APR, subject to approval.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/app.js"></script>
+<script>
+const TABS = [['all', 'All treatments'], ...Object.entries(CATS)];
+$('#tabs').innerHTML = TABS.map(([k, v]) => `<button data-c="${k}">${v}</button>`).join('');
+function showCat(c) {
+  $$('#tabs button').forEach(b => b.classList.toggle('active', b.dataset.c === c));
+  $('#tGrid').innerHTML = TREATMENTS.filter(t => c === 'all' || t.cat === c).map(treatmentCard).join('');
+  observeReveals();
+}
+$('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) showCat(b.dataset.c); });
+showCat('all');
+
+// ---- estimator ----
+const COVER = { general: 1, emergency: .8, restorative: .5, ortho: .5, cosmetic: 0 };
+const sel = store.get('lumen-est', { items: {}, cov: 'none', term: 0, annual: 1500 });
+const q = new URLSearchParams(location.search);
+if (q.get('add')) sel.items[q.get('add')] = sel.items[q.get('add')] || 1;
+$('#estList').innerHTML = TREATMENTS.map(t => `<div class="est-row" data-id="${t.id}">
+  <input type="checkbox" class="check" id="c-${t.id}">
+  <label for="c-${t.id}"><b>${t.name}</b><small>${CATS[t.cat]} · avg. ${money(t.est)} / ${t.unit}</small></label>
+  ${t.qty ? `<div class="qty"><button type="button" data-d="-1" aria-label="Fewer">−</button><span>1</span><button type="button" data-d="1" aria-label="More">+</button></div>` : '<span></span>'}
+  <span class="price">${money(t.est)}</span></div>`).join('');
+function calc() {
+  let sub = 0, save = 0;
+  TREATMENTS.forEach(t => {
+    const row = $(`.est-row[data-id="${t.id}"]`), n = sel.items[t.id] || 0, on = n > 0;
+    $('.check', row).checked = on;
+    const qd = $('.qty', row); if (qd) { qd.classList.toggle('off', !on); $('span', qd).textContent = Math.max(n, 1); }
+    $('.price', row).textContent = money(t.est * Math.max(n, 1));
+    if (!on) return;
+    const cost = t.est * n; sub += cost;
+    if (sel.cov === 'member') save += ['exam', 'cleaning'].includes(t.id) ? cost : cost * .2;
+    if (sel.cov === 'ppo') save += cost * COVER[t.cat];
+  });
+  if (sel.cov === 'ppo') save = Math.min(save, sel.annual);
+  const total = Math.max(sub - save, 0), term = +sel.term;
+  $('#sSub').textContent = money(sub); $('#sSave').textContent = '−' + money(save); $('#sTotal').textContent = money(total);
+  $('#sSaveLbl').textContent = { none: 'Savings', ppo: 'Estimated insurance pays', member: 'Membership savings' }[sel.cov];
+  $('#maxWrap').style.display = sel.cov === 'ppo' ? '' : 'none';
+  $('#annualOut').textContent = money(sel.annual); $('#annual').value = sel.annual;
+  $$('#cov button').forEach(b => b.classList.toggle('active', b.dataset.v === sel.cov));
+  $$('#term button').forEach(b => b.classList.toggle('active', +b.dataset.v === term));
+  let monthly = '';
+  if (!sub) monthly = '<small>Select treatments to see your estimate</small>';
+  else if (!term) monthly = `<small>Pay today</small><b>${money(total)}</b><small>or split it over 6–24 months</small>`;
+  else { const r = term > 12 ? .099 / 12 : 0, m = r ? total * r / (1 - Math.pow(1 + r, -term)) : total / term;
+    monthly = `<small>Estimated monthly</small><b>${money(m, 2)}</b><small>${term} months · ${r ? '9.9' : '0'}% APR</small>`; }
+  $('#monthly').innerHTML = monthly;
+  const first = TREATMENTS.find(t => sel.items[t.id]);
+  const map = { veneers: 'cosmetic', crown: 'exam' };
+  $('#estBook').href = 'book.html' + (first ? '?service=' + (map[first.id] || first.id) : '');
+  $('#estBook').textContent = first && !['aligners', 'implant', 'veneers'].includes(first.id) ? 'Book this treatment' : 'Book a free consultation';
+  store.set('lumen-est', { ...sel, total, sub });
+}
+$('#estList').addEventListener('click', e => {
+  const row = e.target.closest('.est-row'); if (!row) return; const id = row.dataset.id;
+  if (e.target.matches('.check')) { sel.items[id] = e.target.checked ? 1 : 0; calc(); }
+  const b = e.target.closest('.qty button'); if (b) { sel.items[id] = Math.min(10, Math.max(1, (sel.items[id] || 1) + +b.dataset.d)); calc(); }
+});
+$('#cov').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel.cov = b.dataset.v; calc(); } });
+$('#term').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel.term = +b.dataset.v; calc(); } });
+$('#annual').addEventListener('input', e => { sel.annual = +e.target.value; calc(); });
+document.addEventListener('click', e => { const a = e.target.closest('[data-est]'); if (!a) return; e.preventDefault(); sel.items[a.dataset.est] = sel.items[a.dataset.est] || 1; calc(); $('#estimator').scrollIntoView({ behavior: 'smooth' }); toast('Added to your estimate'); });
+calc();
+if (location.hash === '#estimator') setTimeout(() => $('#estimator').scrollIntoView(), 50);
+else if (location.hash) { const c = TREATMENTS.find(t => t.id === location.hash.slice(1)); if (c) setTimeout(() => document.getElementById(c.id)?.scrollIntoView({ block: 'center' }), 80); }
+observeReveals();
+</script>
+</body>
+</html>

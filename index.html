@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen Dental Studio — Modern Cosmetic &amp; Family Dentistry in Scottsdale, AZ</title>
+<meta name="description" content="Lumen Dental Studio offers calm, modern dental care in Scottsdale, AZ: cleanings, whitening, veneers, clear aligners and implants. Book online in 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='12' fill='%231f6f68'/><path d='M14 11c-2.4 0-3.8 1.8-3.8 4.2 0 2.8 1.4 4.2 1.9 6.5.5 2.8.9 6.1 2.3 6.1s1.6-3.7 4-3.7 2.6 3.7 4 3.7 1.8-3.3 2.3-6.1c.5-2.3 1.9-3.7 1.9-6.5 0-2.4-1.4-4.2-3.8-4.2-1.9 0-2.8.9-4.6.9S15.9 11 14 11z' fill='%23f7f4ef'/></svg>">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="home">
+<div id="header"></div>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow fade-up">Old Town Scottsdale · Est. 2015</span>
+      <h1><span class="split-line"><span>Dentistry that</span></span><span class="split-line"><span>feels like</span></span><span class="split-line"><span><em>self-care.</em></span></span></h1>
+      <p class="lead fade-up">Calm rooms, gentle hands and honest prices. From your first cleaning to a complete smile makeover, Lumen is dental care designed around you.</p>
+      <div class="hero-actions fade-up">
+        <a href="book.html" class="btn btn-primary">Book Your Visit →</a>
+        <a href="treatments.html#estimator" class="btn btn-line">Estimate My Cost</a>
+      </div>
+      <div class="hero-meta fade-up">
+        <div><b>4.9★</b><span>1,480+ patient reviews</span></div>
+        <div><b>3 days</b><span>avg. wait for new patients</span></div>
+        <div><b>0%</b><span>financing for 12 months</span></div>
+      </div>
+      <div class="appt-banner" id="apptBanner"></div>
+    </div>
+    <div class="hero-art fade-up">
+      <img class="main" src="https://images.unsplash.com/photo-1777331903190-341a3dd0441b?auto=format&fit=crop&w=1100&q=80" alt="Lumen dentist chatting with a patient in a bright treatment room">
+      <div class="glass g-a"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><div><small>Next opening</small><b id="nextOpen">—</b></div></div>
+      <div class="glass g-b"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><div><b>Most PPO plans</b><small>accepted &amp; filed for you</small></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Cleanings &amp; Exams</span><span>Professional Whitening</span><span>Porcelain Veneers</span><span>Clear Aligners</span><span>Dental Implants</span><span>Same-Day Crowns</span><span>Kids’ Dentistry</span><span>Emergency Care</span><span>Cleanings &amp; Exams</span><span>Professional Whitening</span><span>Porcelain Veneers</span><span>Clear Aligners</span><span>Dental Implants</span><span>Same-Day Crowns</span><span>Kids’ Dentistry</span><span>Emergency Care</span></div></div>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Treatments</span><h2>Everything your smile needs, <em>under one roof</em></h2></div><a href="treatments.html" class="link">View all treatments &amp; prices</a></div>
+    <div class="t-grid" id="tGrid"></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container ba-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Smile gallery</span>
+      <h2 style="margin-top:.9rem">See the <em>difference</em></h2>
+      <p class="lead" style="margin-top:1rem">Drag the slider to compare. Every treatment is planned digitally, so you preview your result before we start.</p>
+      <div class="ba-tabs" id="baTabs">
+        <button class="active" data-img="1769559893692-c6d0623bf8e4" data-s="8 shades|1 visit|$449">Whitening</button>
+        <button data-img="1489278353717-f64c6ee8a4d2" data-s="6 veneers|2 visits|$8,100">Veneers</button>
+        <button data-img="1784460469850-80838868f4d2" data-s="11 months|Clear aligners|$4,800">Aligners</button>
+      </div>
+      <div class="ba-stats" id="baStats"></div>
+      <p class="fine" style="margin-top:1.4rem">Illustrative simulation for this demo website. Individual results vary.</p>
+    </div>
+    <div class="ba reveal" id="ba">
+      <img class="after" src="https://images.unsplash.com/photo-1769559893692-c6d0623bf8e4?auto=format&fit=crop&w=1200&q=80" alt="Smile after treatment">
+      <img class="before" src="https://images.unsplash.com/photo-1769559893692-c6d0623bf8e4?auto=format&fit=crop&w=1200&q=80" alt="Smile before treatment">
+      <span class="tag l">Before</span><span class="tag r">After</span>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Before and after comparison">
+    </div>
+  </div>
+</section>
+
+<section class="exp">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">The Lumen experience</span><h2>Not your usual <em>dental visit</em></h2><p>We designed every detail to make appointments calmer — especially if you’ve been putting them off.</p></div></div>
+    <div class="exp-grid reveal">
+      <div class="exp-item"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><h3>Comfort menu</h3><p>Noise-cancelling headphones, weighted blankets, aromatherapy and ceiling-mounted screens.</p></div>
+      <div class="exp-item"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></svg></div><h3>3D digital scans</h3><p>No goopy impressions. Low-dose imaging and a 3D preview of your treatment.</p></div>
+      <div class="exp-item"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></svg></div><h3>Clear pricing</h3><p>Itemized estimates before treatment and insurance benefits checked in advance.</p></div>
+      <div class="exp-item"><div class="ic"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>On your schedule</h3><p>Early mornings, Saturdays and same-day emergencies. Book online 24/7.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Meet your dentists</span><h2>Gentle experts, <em>genuinely kind</em></h2></div><a href="team.html" class="link">Meet the whole team</a></div>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="container">
+    <div class="section-head reveal"><div><span class="eyebrow">Patient stories</span><h2>Loved by <em>1,480+</em> patients</h2></div></div>
+    <div class="carousel reveal" id="carousel">
+      <div class="c-viewport"><div class="c-track"></div></div>
+      <div class="c-ctrl"><div class="dots"></div><div class="arrows"><button class="icon-btn prev" aria-label="Previous">‹</button><button class="icon-btn next" aria-label="Next">›</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="band reveal">
+      <div>
+        <span class="eyebrow" style="color:inherit;opacity:.8">Insurance &amp; financing</span>
+        <h2 style="margin-top:.9rem">Great care, <em>without the surprise bill</em></h2>
+        <p>We’re in-network with most PPO plans. No insurance? Our membership covers your preventive care for one simple monthly price.</p>
+        <a href="pricing.html" class="btn btn-white">Explore payment options →</a>
+      </div>
+      <div class="band-list">
+        <div><span>Lumen Membership</span><b>$34<small style="font:500 .9rem var(--sans)">/mo</small></b></div>
+        <div><span>0% APR financing</span><b>12 mo</b></div>
+        <div><span>Free consultations</span><b>Implants · Aligners</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container faq-grid">
+    <div class="reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2 style="margin-top:.9rem">Good <em>questions</em></h2>
+      <p class="lead" style="margin:1rem 0 2rem">Still curious? Call us at <a href="tel:+14805550164" class="link">(480) 555-0164</a> — a real person picks up.</p>
+      <a href="book.html" class="btn btn-primary">Book Appointment</a>
+    </div>
+    <div class="acc reveal" id="faq"></div>
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+<script src="assets/app.js"></script>
+<script>
+$('#tGrid').innerHTML = ['exam', 'whitening', 'aligners', 'implant', 'veneers', 'emergency'].map(id => treatmentCard(TREATMENTS.find(t => t.id === id))).join('');
+$('#teamGrid').innerHTML = DOCTORS.map(docCard).join('');
+const openDoc = docModal(); $('#teamGrid').addEventListener('click', e => { const b = e.target.closest('[data-doc]'); if (b) openDoc(b.dataset.doc); });
+carousel($('#carousel'), REVIEWS, reviewQuote);
+faqAccordion($('#faq'), FAQ);
+
+// before / after
+const ba = $('#ba'); beforeAfter(ba);
+function setCase(btn) {
+  $$('#baTabs button').forEach(b => b.classList.toggle('active', b === btn));
+  $$('img', ba).forEach(i => i.src = IMG(btn.dataset.img, 1200));
+  const [a, b, c] = btn.dataset.s.split('|');
+  $('#baStats').innerHTML = `<div><b>${a}</b><span>${btn.textContent === 'Whitening' ? 'brighter' : 'result'}</span></div><div><b>${b}</b><span>treatment time</span></div><div><b>${c}</b><span>typical cost</span></div>`;
+}
+$('#baTabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setCase(b); }); setCase($('#baTabs button'));
+// gentle intro animation of the slider
+setTimeout(() => { let v = 50, dir = -1, n = 0; const t = setInterval(() => { v += dir * 2; if (v <= 30 || v >= 70) { dir *= -1; n++; } $('input', ba).value = v; ba.style.setProperty('--pos', v + '%'); if (n >= 2 && Math.abs(v - 50) < 2) clearInterval(t); }, 22); }, 1400);
+
+// next opening + saved appointment
+const nx = nextOpening();
+if (nx) $('#nextOpen').textContent = (nx.d.toDateString() === new Date().toDateString() ? 'Today' : nx.d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })) + ', ' + fmtTime(nx.t);
+const appt = store.get('lumen-appt', null);
+if (appt && new Date(appt.iso) > new Date()) {
+  const b = $('#apptBanner'); b.classList.add('show');
+  b.innerHTML = `<span class="pill">${ic('calendar', 14)} Upcoming</span><div><b>${appt.service}</b><br>${new Date(appt.iso).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })} at ${appt.time} · ${appt.doctor}</div><a href="book.html?view=1" class="link">Manage</a>`;
+}
+observeReveals();
+</script>
+</body>
+</html>
