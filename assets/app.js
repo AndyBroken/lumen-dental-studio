@@ -1,3 +1,4 @@
+/*! © 2026 Andrey (github.com/AndyBroken). All rights reserved. Concept / demo project, see LICENSE. */
 /* ===== Lumen Dental Studio — shared data, layout & components ===== */
 const IMG = (id, w = 900) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 const PHONE = '(480) 555-0164', TEL = 'tel:+14805550164', EMAIL = 'hello@lumendental.example';
@@ -140,7 +141,7 @@ if (footer) footer.outerHTML = `
         <div class="f-hours" style="margin-top:1rem">${HOURS.map(([d, h]) => `<b>${d}</b><span>${h}</span>`).join('')}</div></div>
     </div>
     <div class="f-big">Lumen Dental</div>
-    <div class="f-bottom"><span>© ${new Date().getFullYear()} Lumen Dental Studio · All rights reserved</span><span>Concept website · Demo project</span></div>
+    <div class="f-bottom"><span>© ${new Date().getFullYear()} Lumen Dental Studio · All rights reserved</span><span>Concept website · Demo project · Design &amp; code © 2026 Andrey (AndyBroken)</span></div>
   </div>
 </footer>
 <div class="mobile-book" id="mobileBook"><a href="book.html" class="btn btn-primary">${ic('calendar', 18)} Book an appointment</a></div>

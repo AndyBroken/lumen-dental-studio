@@ -15,3 +15,7 @@ Premium multi-page website for a cosmetic & family dental clinic in Scottsdale, 
 **Tech:** HTML5, CSS3 (custom properties, grid), vanilla JavaScript — no frameworks. Photos: Unsplash.
 
 *Concept / demo project — Lumen is a fictional brand. No real bookings, payments or personal data are sent.*
+
+## License
+
+© 2026 Andrey ([AndyBroken](https://github.com/AndyBroken)). All rights reserved. This is a portfolio demo: you may view it, but not copy or reuse the code or design. See [LICENSE](LICENSE).
