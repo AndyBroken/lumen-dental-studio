@@ -356,6 +356,9 @@ input[type=range]{width:100%;accent-color:var(--gold)}
 .f input,.f select,.f textarea{width:100%;padding:.95rem 1.1rem;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);font:inherit;font-size:1rem;transition:.2s}
 .f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 18%,transparent)}
 .f textarea{min-height:100px;resize:vertical}
+.f .consent{display:flex}
+.f input.check{width:24px;height:24px;padding:0;border:1.5px solid var(--line);border-radius:8px}
+.f input.check:checked{border-color:var(--teal)}
 .invalid{border-color:#c0392b!important;box-shadow:0 0 0 4px rgba(192,57,43,.12)!important}
 .err{color:#c0392b;font-size:.82rem;margin-top:.3rem;display:none}
 .invalid + .err{display:block}
